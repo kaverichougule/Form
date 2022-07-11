@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="global-container">
+	<div class="card login-form">
+	<div class="card-body">
+		<h3 class="card-title text-center">Register to Here</h3>
+		<div class="card-text">
+			
+			{% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+				{{message}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			{% endfor%}
+			
+
+			<form method="POST">
+				{% csrf_token %}
+				
+
+				<!-- to error: add class "has-danger" -->
+				<div class="form-group">
+					<label for="">Username</label>
+                    <input type="text" id="username" name="username" class="form-control form-control-sm"  placeholder="Create a Username" Required>
+				</div>
+				<div class="form-group">
+					<label for="">First Name</label>
+                    <input type="text" id="fname" name="fname" class="form-control form-control-sm" placeholder="Enter your First Name" Required>
+				</div>
+                <div class="form-group">
+					<label for="">Last Name</label>
+                    <input type="text" id="lname" name="lname" class="form-control form-control-sm" placeholder="Enter your Last Name" Required>
+				</div>
+                <div class="form-group">
+					<label for="">Email</label>
+                    <input type="email" id="email" name="email" class="form-control form-control-sm" placeholder="Enter your Email" Required>
+				</div>
+				<div class="form-group">
+					<label for="">Password</label>
+                    <input type="password" id="pass1" name="pass1" class="form-control form-control-sm" placeholder="Password" Required>
+				</div>
+                <div class="form-group">
+					<label for="">Confirm Password</label>
+                    <input type="password" id="pass2" name="pass2" class="form-control form-control-sm" placeholder="Confirm Password" Required>
+				</div>
+				<div class="text-center mt-4">
+					<button type="submit" class="btn btn-primary btn-block">Register</button>
+				</div>
+				<div class="sign-up">
+					Already have an account? <a href="{% url 'signin' %}">Login</a>
+				</div>
+			</form>
+			
+
+			
+		</div>
+	</div>
+</div>
+</div>
+
+
+{% endblock %}
+    
+</body>
+</html>

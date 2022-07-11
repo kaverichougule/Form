@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="global-container">
+	<div class="card login-form">
+	<div class="card-body">
+		<h3 class="card-title text-center">Login to Here</h3>
+		<div class="card-text">
+			{% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+				{{message}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			{% endfor%}
+			<form action="/signin" method="post">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="">Username</label>
+                    <input type="text" id="username" name="username" class="form-control form-control-sm" placeholder="Enter Your Username" Required>
+				</div>
+				<div class="form-group">
+					<label for="">Password</label>
+					<input type="password" id="pass1" name="pass1" class="form-control form-control-sm" placeholder="Enter Your Password" Required>
+                    <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+				</div>
+				<div class="text-center mt-4">
+					<button type="submit" class="btn btn-primary btn-block ">Login</button>
+				</div>
+				
+				<div class="sign-up ">
+					Don't have an account? <a href="{% url 'register' %}">Create One</a>
+				</div>
+			</form>
+
+			
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+{% endblock %}
